@@ -1,0 +1,1102 @@
+version: 2026.10.21-frozen-v2
+Topology-v1:
+- flow_id: 1
+  src: AMR_Cell
+  dst: Brake_Ctrl
+  path:
+  - e_acc_A
+  - e3u
+  - e01
+  - e_sink_A
+  period_ns: 500000
+  deadline_ns: 500000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 24000
+  base_offsets_ns:
+    e_acc_A: 24000
+    e3u: 68000
+    e01: 112000
+    e_sink_A: 156000
+  env_early_ns:
+    e3u: 40000
+    e01: 84000
+  env_late_ns:
+    e3u: 96000
+    e01: 140000
+- flow_id: 2
+  src: Robot_Aux
+  dst: Prot_Ctrl
+  path:
+  - e_acc_A
+  - e3u
+  - e02
+  - e_sink_C
+  period_ns: 500000
+  deadline_ns: 500000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 136000
+  base_offsets_ns:
+    e_acc_A: 136000
+    e3u: 180000
+    e02: 224000
+    e_sink_C: 268000
+  env_early_ns:
+    e3u: 152000
+    e02: 196000
+  env_late_ns:
+    e3u: 208000
+    e02: 252000
+- flow_id: 3
+  src: Arm_Master
+  dst: Collab_Ctrl
+  path:
+  - e_acc_B
+  - e4u
+  - e01
+  - e_sink_B
+  period_ns: 500000
+  deadline_ns: 500000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 136000
+  base_offsets_ns:
+    e_acc_B: 136000
+    e4u: 180000
+    e01: 224000
+    e_sink_B: 268000
+  env_early_ns:
+    e4u: 152000
+    e01: 196000
+  env_late_ns:
+    e4u: 208000
+    e01: 252000
+- flow_id: 4
+  src: Motor_Drive
+  dst: Prot_Ctrl
+  path:
+  - e_acc_C
+  - e4u
+  - e02
+  - e_sink_C
+  period_ns: 500000
+  deadline_ns: 500000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 24000
+  base_offsets_ns:
+    e_acc_C: 24000
+    e4u: 68000
+    e02: 112000
+    e_sink_C: 156000
+  env_early_ns:
+    e4u: 40000
+    e02: 84000
+  env_late_ns:
+    e4u: 96000
+    e02: 140000
+- flow_id: 5
+  src: AMR_Cell
+  dst: Brake_Ctrl
+  path:
+  - e_acc_A
+  - e3u
+  - e01
+  - e_sink_A
+  period_ns: 500000
+  deadline_ns: 500000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 32160
+  base_offsets_ns:
+    e_acc_A: 32160
+    e3u: 76160
+    e01: 120160
+    e_sink_A: 164160
+  env_early_ns:
+    e3u: 48160
+    e01: 92160
+  env_late_ns:
+    e3u: 104160
+    e01: 148160
+- flow_id: 6
+  src: Robot_Aux
+  dst: Prot_Ctrl
+  path:
+  - e_acc_A
+  - e3u
+  - e02
+  - e_sink_C
+  period_ns: 500000
+  deadline_ns: 500000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 144160
+  base_offsets_ns:
+    e_acc_A: 144160
+    e3u: 188160
+    e02: 232160
+    e_sink_C: 276160
+  env_early_ns:
+    e3u: 160160
+    e02: 204160
+  env_late_ns:
+    e3u: 216160
+    e02: 260160
+- flow_id: 7
+  src: Arm_Master
+  dst: Collab_Ctrl
+  path:
+  - e_acc_B
+  - e4u
+  - e01
+  - e_sink_B
+  period_ns: 500000
+  deadline_ns: 500000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 144160
+  base_offsets_ns:
+    e_acc_B: 144160
+    e4u: 188160
+    e01: 232160
+    e_sink_B: 276160
+  env_early_ns:
+    e4u: 160160
+    e01: 204160
+  env_late_ns:
+    e4u: 216160
+    e01: 260160
+- flow_id: 8
+  src: Motor_Drive
+  dst: Prot_Ctrl
+  path:
+  - e_acc_C
+  - e4u
+  - e02
+  - e_sink_C
+  period_ns: 500000
+  deadline_ns: 500000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 32160
+  base_offsets_ns:
+    e_acc_C: 32160
+    e4u: 76160
+    e02: 120160
+    e_sink_C: 164160
+  env_early_ns:
+    e4u: 48160
+    e02: 92160
+  env_late_ns:
+    e4u: 104160
+    e02: 148160
+- flow_id: 9
+  src: AMR_Cell
+  dst: Brake_Ctrl
+  path:
+  - e_acc_A
+  - e3u
+  - e01
+  - e_sink_A
+  period_ns: 500000
+  deadline_ns: 500000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 40320
+  base_offsets_ns:
+    e_acc_A: 40320
+    e3u: 84320
+    e01: 128320
+    e_sink_A: 172320
+  env_early_ns:
+    e3u: 56320
+    e01: 100320
+  env_late_ns:
+    e3u: 112320
+    e01: 156320
+- flow_id: 10
+  src: Robot_Aux
+  dst: Prot_Ctrl
+  path:
+  - e_acc_A
+  - e3u
+  - e02
+  - e_sink_C
+  period_ns: 500000
+  deadline_ns: 500000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 152320
+  base_offsets_ns:
+    e_acc_A: 152320
+    e3u: 196320
+    e02: 240320
+    e_sink_C: 284320
+  env_early_ns:
+    e3u: 168320
+    e02: 212320
+  env_late_ns:
+    e3u: 224320
+    e02: 268320
+- flow_id: 11
+  src: Arm_Master
+  dst: Collab_Ctrl
+  path:
+  - e_acc_B
+  - e4u
+  - e01
+  - e_sink_B
+  period_ns: 500000
+  deadline_ns: 500000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 152320
+  base_offsets_ns:
+    e_acc_B: 152320
+    e4u: 196320
+    e01: 240320
+    e_sink_B: 284320
+  env_early_ns:
+    e4u: 168320
+    e01: 212320
+  env_late_ns:
+    e4u: 224320
+    e01: 268320
+- flow_id: 12
+  src: Motor_Drive
+  dst: Prot_Ctrl
+  path:
+  - e_acc_C
+  - e4u
+  - e02
+  - e_sink_C
+  period_ns: 500000
+  deadline_ns: 500000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 40320
+  base_offsets_ns:
+    e_acc_C: 40320
+    e4u: 84320
+    e02: 128320
+    e_sink_C: 172320
+  env_early_ns:
+    e4u: 56320
+    e02: 100320
+  env_late_ns:
+    e4u: 112320
+    e02: 156320
+- flow_id: 13
+  src: AMR_Cell
+  dst: Brake_Ctrl
+  path:
+  - e_acc_A
+  - e3u
+  - e01
+  - e_sink_A
+  period_ns: 500000
+  deadline_ns: 500000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 48480
+  base_offsets_ns:
+    e_acc_A: 48480
+    e3u: 92480
+    e01: 136480
+    e_sink_A: 180480
+  env_early_ns:
+    e3u: 64480
+    e01: 108480
+  env_late_ns:
+    e3u: 120480
+    e01: 164480
+- flow_id: 14
+  src: Robot_Aux
+  dst: Prot_Ctrl
+  path:
+  - e_acc_A
+  - e3u
+  - e02
+  - e_sink_C
+  period_ns: 500000
+  deadline_ns: 500000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 160480
+  base_offsets_ns:
+    e_acc_A: 160480
+    e3u: 204480
+    e02: 248480
+    e_sink_C: 292480
+  env_early_ns:
+    e3u: 176480
+    e02: 220480
+  env_late_ns:
+    e3u: 232480
+    e02: 276480
+- flow_id: 15
+  src: Arm_Master
+  dst: Collab_Ctrl
+  path:
+  - e_acc_B
+  - e4u
+  - e01
+  - e_sink_B
+  period_ns: 500000
+  deadline_ns: 500000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 160480
+  base_offsets_ns:
+    e_acc_B: 160480
+    e4u: 204480
+    e01: 248480
+    e_sink_B: 292480
+  env_early_ns:
+    e4u: 176480
+    e01: 220480
+  env_late_ns:
+    e4u: 232480
+    e01: 276480
+- flow_id: 16
+  src: Motor_Drive
+  dst: Prot_Ctrl
+  path:
+  - e_acc_C
+  - e4u
+  - e02
+  - e_sink_C
+  period_ns: 500000
+  deadline_ns: 500000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 48480
+  base_offsets_ns:
+    e_acc_C: 48480
+    e4u: 92480
+    e02: 136480
+    e_sink_C: 180480
+  env_early_ns:
+    e4u: 64480
+    e02: 108480
+  env_late_ns:
+    e4u: 120480
+    e02: 164480
+- flow_id: 17
+  src: AMR_Cell
+  dst: Brake_Ctrl
+  path:
+  - e_acc_A
+  - e3u
+  - e01
+  - e_sink_A
+  period_ns: 1000000
+  deadline_ns: 1000000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 56640
+  base_offsets_ns:
+    e_acc_A: 56640
+    e3u: 100640
+    e01: 144640
+    e_sink_A: 188640
+  env_early_ns:
+    e3u: 72640
+    e01: 116640
+  env_late_ns:
+    e3u: 128640
+    e01: 172640
+- flow_id: 18
+  src: Robot_Aux
+  dst: Prot_Ctrl
+  path:
+  - e_acc_A
+  - e3u
+  - e02
+  - e_sink_C
+  period_ns: 1000000
+  deadline_ns: 1000000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 168640
+  base_offsets_ns:
+    e_acc_A: 168640
+    e3u: 212640
+    e02: 256640
+    e_sink_C: 300640
+  env_early_ns:
+    e3u: 184640
+    e02: 228640
+  env_late_ns:
+    e3u: 240640
+    e02: 284640
+- flow_id: 19
+  src: Arm_Master
+  dst: Collab_Ctrl
+  path:
+  - e_acc_B
+  - e4u
+  - e01
+  - e_sink_B
+  period_ns: 1000000
+  deadline_ns: 1000000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 168640
+  base_offsets_ns:
+    e_acc_B: 168640
+    e4u: 212640
+    e01: 256640
+    e_sink_B: 300640
+  env_early_ns:
+    e4u: 184640
+    e01: 228640
+  env_late_ns:
+    e4u: 240640
+    e01: 284640
+- flow_id: 20
+  src: Motor_Drive
+  dst: Prot_Ctrl
+  path:
+  - e_acc_C
+  - e4u
+  - e02
+  - e_sink_C
+  period_ns: 1000000
+  deadline_ns: 1000000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 56640
+  base_offsets_ns:
+    e_acc_C: 56640
+    e4u: 100640
+    e02: 144640
+    e_sink_C: 188640
+  env_early_ns:
+    e4u: 72640
+    e02: 116640
+  env_late_ns:
+    e4u: 128640
+    e02: 172640
+- flow_id: 21
+  src: AMR_Cell
+  dst: Brake_Ctrl
+  path:
+  - e_acc_A
+  - e3u
+  - e01
+  - e_sink_A
+  period_ns: 1000000
+  deadline_ns: 1000000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 64800
+  base_offsets_ns:
+    e_acc_A: 64800
+    e3u: 108800
+    e01: 152800
+    e_sink_A: 196800
+  env_early_ns:
+    e3u: 80800
+    e01: 124800
+  env_late_ns:
+    e3u: 136800
+    e01: 180800
+- flow_id: 22
+  src: Robot_Aux
+  dst: Prot_Ctrl
+  path:
+  - e_acc_A
+  - e3u
+  - e02
+  - e_sink_C
+  period_ns: 1000000
+  deadline_ns: 1000000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 176800
+  base_offsets_ns:
+    e_acc_A: 176800
+    e3u: 220800
+    e02: 264800
+    e_sink_C: 308800
+  env_early_ns:
+    e3u: 192800
+    e02: 236800
+  env_late_ns:
+    e3u: 248800
+    e02: 292800
+- flow_id: 23
+  src: Arm_Master
+  dst: Collab_Ctrl
+  path:
+  - e_acc_B
+  - e4u
+  - e01
+  - e_sink_B
+  period_ns: 1000000
+  deadline_ns: 1000000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 176800
+  base_offsets_ns:
+    e_acc_B: 176800
+    e4u: 220800
+    e01: 264800
+    e_sink_B: 308800
+  env_early_ns:
+    e4u: 192800
+    e01: 236800
+  env_late_ns:
+    e4u: 248800
+    e01: 292800
+- flow_id: 24
+  src: Motor_Drive
+  dst: Prot_Ctrl
+  path:
+  - e_acc_C
+  - e4u
+  - e02
+  - e_sink_C
+  period_ns: 1000000
+  deadline_ns: 1000000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 64800
+  base_offsets_ns:
+    e_acc_C: 64800
+    e4u: 108800
+    e02: 152800
+    e_sink_C: 196800
+  env_early_ns:
+    e4u: 80800
+    e02: 124800
+  env_late_ns:
+    e4u: 136800
+    e02: 180800
+- flow_id: 25
+  src: AMR_Cell
+  dst: Brake_Ctrl
+  path:
+  - e_acc_A
+  - e3u
+  - e01
+  - e_sink_A
+  period_ns: 1000000
+  deadline_ns: 1000000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 248000
+  base_offsets_ns:
+    e_acc_A: 248000
+    e3u: 292000
+    e01: 336000
+    e_sink_A: 380000
+  env_early_ns:
+    e3u: 264000
+    e01: 308000
+  env_late_ns:
+    e3u: 320000
+    e01: 364000
+- flow_id: 26
+  src: Robot_Aux
+  dst: Prot_Ctrl
+  path:
+  - e_acc_A
+  - e3u
+  - e02
+  - e_sink_C
+  period_ns: 1000000
+  deadline_ns: 1000000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 360000
+  base_offsets_ns:
+    e_acc_A: 360000
+    e3u: 404000
+    e02: 448000
+    e_sink_C: 492000
+  env_early_ns:
+    e3u: 376000
+    e02: 420000
+  env_late_ns:
+    e3u: 432000
+    e02: 476000
+- flow_id: 27
+  src: Arm_Master
+  dst: Collab_Ctrl
+  path:
+  - e_acc_B
+  - e4u
+  - e01
+  - e_sink_B
+  period_ns: 1000000
+  deadline_ns: 1000000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 360000
+  base_offsets_ns:
+    e_acc_B: 360000
+    e4u: 404000
+    e01: 448000
+    e_sink_B: 492000
+  env_early_ns:
+    e4u: 376000
+    e01: 420000
+  env_late_ns:
+    e4u: 432000
+    e01: 476000
+- flow_id: 28
+  src: Motor_Drive
+  dst: Prot_Ctrl
+  path:
+  - e_acc_C
+  - e4u
+  - e02
+  - e_sink_C
+  period_ns: 1000000
+  deadline_ns: 1000000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 248000
+  base_offsets_ns:
+    e_acc_C: 248000
+    e4u: 292000
+    e02: 336000
+    e_sink_C: 380000
+  env_early_ns:
+    e4u: 264000
+    e02: 308000
+  env_late_ns:
+    e4u: 320000
+    e02: 364000
+- flow_id: 29
+  src: AMR_Cell
+  dst: Brake_Ctrl
+  path:
+  - e_acc_A
+  - e3u
+  - e01
+  - e_sink_A
+  period_ns: 2000000
+  deadline_ns: 2000000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 256160
+  base_offsets_ns:
+    e_acc_A: 256160
+    e3u: 300160
+    e01: 344160
+    e_sink_A: 388160
+  env_early_ns:
+    e3u: 272160
+    e01: 316160
+  env_late_ns:
+    e3u: 328160
+    e01: 372160
+- flow_id: 30
+  src: Robot_Aux
+  dst: Prot_Ctrl
+  path:
+  - e_acc_A
+  - e3u
+  - e02
+  - e_sink_C
+  period_ns: 2000000
+  deadline_ns: 2000000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 368160
+  base_offsets_ns:
+    e_acc_A: 368160
+    e3u: 412160
+    e02: 456160
+    e_sink_C: 500160
+  env_early_ns:
+    e3u: 384160
+    e02: 428160
+  env_late_ns:
+    e3u: 440160
+    e02: 484160
+- flow_id: 31
+  src: Arm_Master
+  dst: Collab_Ctrl
+  path:
+  - e_acc_B
+  - e4u
+  - e01
+  - e_sink_B
+  period_ns: 2000000
+  deadline_ns: 2000000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 368160
+  base_offsets_ns:
+    e_acc_B: 368160
+    e4u: 412160
+    e01: 456160
+    e_sink_B: 500160
+  env_early_ns:
+    e4u: 384160
+    e01: 428160
+  env_late_ns:
+    e4u: 440160
+    e01: 484160
+- flow_id: 32
+  src: Motor_Drive
+  dst: Prot_Ctrl
+  path:
+  - e_acc_C
+  - e4u
+  - e02
+  - e_sink_C
+  period_ns: 2000000
+  deadline_ns: 2000000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 256160
+  base_offsets_ns:
+    e_acc_C: 256160
+    e4u: 300160
+    e02: 344160
+    e_sink_C: 388160
+  env_early_ns:
+    e4u: 272160
+    e02: 316160
+  env_late_ns:
+    e4u: 328160
+    e02: 372160
+- flow_id: 33
+  src: AMR_Cell
+  dst: Brake_Ctrl
+  path:
+  - e_acc_A
+  - e3u
+  - e01
+  - e_sink_A
+  period_ns: 2000000
+  deadline_ns: 2000000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 264320
+  base_offsets_ns:
+    e_acc_A: 264320
+    e3u: 308320
+    e01: 352320
+    e_sink_A: 396320
+  env_early_ns:
+    e3u: 280320
+    e01: 324320
+  env_late_ns:
+    e3u: 336320
+    e01: 380320
+- flow_id: 34
+  src: Robot_Aux
+  dst: Prot_Ctrl
+  path:
+  - e_acc_A
+  - e3u
+  - e02
+  - e_sink_C
+  period_ns: 2000000
+  deadline_ns: 2000000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 376320
+  base_offsets_ns:
+    e_acc_A: 376320
+    e3u: 420320
+    e02: 464320
+    e_sink_C: 508320
+  env_early_ns:
+    e3u: 392320
+    e02: 436320
+  env_late_ns:
+    e3u: 448320
+    e02: 492320
+- flow_id: 35
+  src: Arm_Master
+  dst: Collab_Ctrl
+  path:
+  - e_acc_B
+  - e4u
+  - e01
+  - e_sink_B
+  period_ns: 2000000
+  deadline_ns: 2000000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 376320
+  base_offsets_ns:
+    e_acc_B: 376320
+    e4u: 420320
+    e01: 464320
+    e_sink_B: 508320
+  env_early_ns:
+    e4u: 392320
+    e01: 436320
+  env_late_ns:
+    e4u: 448320
+    e01: 492320
+- flow_id: 36
+  src: Motor_Drive
+  dst: Prot_Ctrl
+  path:
+  - e_acc_C
+  - e4u
+  - e02
+  - e_sink_C
+  period_ns: 2000000
+  deadline_ns: 2000000
+  mac_bytes: 1000
+  wire_bytes: 1020
+  tx_ns: 8160
+  phase_ns: 264320
+  base_offsets_ns:
+    e_acc_C: 264320
+    e4u: 308320
+    e02: 352320
+    e_sink_C: 396320
+  env_early_ns:
+    e4u: 280320
+    e02: 324320
+  env_late_ns:
+    e4u: 336320
+    e02: 380320
+- flow_id: 37
+  src: AMR_Cell
+  dst: Brake_Ctrl
+  path:
+  - e_acc_A
+  - e3u
+  - e01
+  - e_sink_A
+  period_ns: 4000000
+  deadline_ns: 4000000
+  mac_bytes: 500
+  wire_bytes: 520
+  tx_ns: 4160
+  phase_ns: 272480
+  base_offsets_ns:
+    e_acc_A: 272480
+    e3u: 316480
+    e01: 360480
+    e_sink_A: 404480
+  env_early_ns:
+    e3u: 288480
+    e01: 332480
+  env_late_ns:
+    e3u: 344480
+    e01: 388480
+- flow_id: 38
+  src: Robot_Aux
+  dst: Prot_Ctrl
+  path:
+  - e_acc_A
+  - e3u
+  - e02
+  - e_sink_C
+  period_ns: 4000000
+  deadline_ns: 4000000
+  mac_bytes: 500
+  wire_bytes: 520
+  tx_ns: 4160
+  phase_ns: 384480
+  base_offsets_ns:
+    e_acc_A: 384480
+    e3u: 428480
+    e02: 472480
+    e_sink_C: 516480
+  env_early_ns:
+    e3u: 400480
+    e02: 444480
+  env_late_ns:
+    e3u: 456480
+    e02: 500480
+- flow_id: 39
+  src: Arm_Master
+  dst: Collab_Ctrl
+  path:
+  - e_acc_B
+  - e4u
+  - e01
+  - e_sink_B
+  period_ns: 4000000
+  deadline_ns: 4000000
+  mac_bytes: 500
+  wire_bytes: 520
+  tx_ns: 4160
+  phase_ns: 384480
+  base_offsets_ns:
+    e_acc_B: 384480
+    e4u: 428480
+    e01: 472480
+    e_sink_B: 516480
+  env_early_ns:
+    e4u: 400480
+    e01: 444480
+  env_late_ns:
+    e4u: 456480
+    e01: 500480
+- flow_id: 40
+  src: Motor_Drive
+  dst: Prot_Ctrl
+  path:
+  - e_acc_C
+  - e4u
+  - e02
+  - e_sink_C
+  period_ns: 4000000
+  deadline_ns: 4000000
+  mac_bytes: 500
+  wire_bytes: 520
+  tx_ns: 4160
+  phase_ns: 272480
+  base_offsets_ns:
+    e_acc_C: 272480
+    e4u: 316480
+    e02: 360480
+    e_sink_C: 404480
+  env_early_ns:
+    e4u: 288480
+    e02: 332480
+  env_late_ns:
+    e4u: 344480
+    e02: 388480
+- flow_id: 41
+  src: AMR_Cell
+  dst: Brake_Ctrl
+  path:
+  - e_acc_A
+  - e3u
+  - e01
+  - e_sink_A
+  period_ns: 8000000
+  deadline_ns: 8000000
+  mac_bytes: 500
+  wire_bytes: 520
+  tx_ns: 4160
+  phase_ns: 280640
+  base_offsets_ns:
+    e_acc_A: 280640
+    e3u: 324640
+    e01: 368640
+    e_sink_A: 412640
+  env_early_ns:
+    e3u: 296640
+    e01: 340640
+  env_late_ns:
+    e3u: 352640
+    e01: 396640
+- flow_id: 42
+  src: Robot_Aux
+  dst: Prot_Ctrl
+  path:
+  - e_acc_A
+  - e3u
+  - e02
+  - e_sink_C
+  period_ns: 8000000
+  deadline_ns: 8000000
+  mac_bytes: 500
+  wire_bytes: 520
+  tx_ns: 4160
+  phase_ns: 392640
+  base_offsets_ns:
+    e_acc_A: 392640
+    e3u: 436640
+    e02: 480640
+    e_sink_C: 524640
+  env_early_ns:
+    e3u: 408640
+    e02: 452640
+  env_late_ns:
+    e3u: 464640
+    e02: 508640
+- flow_id: 43
+  src: Arm_Master
+  dst: Collab_Ctrl
+  path:
+  - e_acc_B
+  - e4u
+  - e01
+  - e_sink_B
+  period_ns: 8000000
+  deadline_ns: 8000000
+  mac_bytes: 500
+  wire_bytes: 520
+  tx_ns: 4160
+  phase_ns: 392640
+  base_offsets_ns:
+    e_acc_B: 392640
+    e4u: 436640
+    e01: 480640
+    e_sink_B: 524640
+  env_early_ns:
+    e4u: 408640
+    e01: 452640
+  env_late_ns:
+    e4u: 464640
+    e01: 508640
+- flow_id: 44
+  src: Motor_Drive
+  dst: Prot_Ctrl
+  path:
+  - e_acc_C
+  - e4u
+  - e02
+  - e_sink_C
+  period_ns: 8000000
+  deadline_ns: 8000000
+  mac_bytes: 500
+  wire_bytes: 520
+  tx_ns: 4160
+  phase_ns: 280640
+  base_offsets_ns:
+    e_acc_C: 280640
+    e4u: 324640
+    e02: 368640
+    e_sink_C: 412640
+  env_early_ns:
+    e4u: 296640
+    e02: 340640
+  env_late_ns:
+    e4u: 352640
+    e02: 396640

@@ -1,0 +1,14 @@
+{
+  "scope": "Diagnostic reference: actual two controlled Q7 hops, configured residual blocking, fixed 650us external pipeline; excludes unmodeled full AVB/BE and device behavior. Not a full-network validation.",
+  "frames": 253,
+  "miss_pct": 0.0,
+  "mean_ms": 0.7270035061746272,
+  "p99_ms": 0.7777804294920247,
+  "max_ms": 0.7782094002795441,
+  "max_closed_ms_by_port": {
+    "e3u": 0.09416,
+    "e4u": 0.09416,
+    "e01": 0.09416,
+    "e02": 0.09416
+  }
+}

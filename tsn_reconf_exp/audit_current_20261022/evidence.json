@@ -1,0 +1,255 @@
+{
+  "recalculated_paired_statistics": {
+    "StrongStatic": {
+      "baseline_minus_ours_pp": 5.347999999999999,
+      "ci95_halfwidth_pp": 2.7906712572053762,
+      "paired_p": 0.0060025819019700315
+    },
+    "Prior+Prop+Rule": {
+      "baseline_minus_ours_pp": 8.334,
+      "ci95_halfwidth_pp": 4.057521612746101,
+      "paired_p": 0.004673644262635933
+    },
+    "Local+Prop+Rule": {
+      "baseline_minus_ours_pp": -2.8760000000000003,
+      "ci95_halfwidth_pp": 3.5180156141122816,
+      "paired_p": 0.08575023770215204
+    },
+    "Prior+Prop+MAPPO": {
+      "baseline_minus_ours_pp": 19.98,
+      "ci95_halfwidth_pp": 5.190341164673463,
+      "paired_p": 0.0004341761859712968
+    },
+    "OwnerProp+MAPPO": {
+      "baseline_minus_ours_pp": 5.897999999999999,
+      "ci95_halfwidth_pp": 3.809353511354175,
+      "paired_p": 0.01265809427060193
+    },
+    "LocalOnly+MAPPO": {
+      "baseline_minus_ours_pp": 1.797999999999999,
+      "ci95_halfwidth_pp": 2.5984530061558,
+      "paired_p": 0.12710141926551438
+    },
+    "Local+Prop+IPPO": {
+      "baseline_minus_ours_pp": 12.219999999999997,
+      "ci95_halfwidth_pp": 2.7207320448904366,
+      "paired_p": 0.0002378265676303542
+    },
+    "FixedOrderJointScheduleOracle": {
+      "baseline_minus_ours_pp": -10.9,
+      "ci95_halfwidth_pp": 4.336234863585415,
+      "paired_p": 0.0022167638621149598
+    }
+  },
+  "validator_counterexamples": {
+    "baseline": [
+      true,
+      "PASS"
+    ],
+    "interior_q6_window_moved_100us": [
+      true,
+      "PASS"
+    ],
+    "all_flex_arrays_with_unchanged_metadata": [
+      true,
+      "PASS"
+    ]
+  },
+  "local_precheck_random_stress": {
+    "port_proposals": 120,
+    "pass": 102,
+    "fallback": 18,
+    "passed_with_overlap_or_changed_order": 0
+  },
+  "observation_log": {
+    "adjacent_shared_histories_equal": 59,
+    "pairs": 59,
+    "rates": {
+      "e3u": {
+        "events_per_8ms_mean": 9.0,
+        "all_avb_be_wire_mbps": 7.3162,
+        "configured_be_alone_mbps": 220.0
+      },
+      "e4u": {
+        "events_per_8ms_mean": 13.0,
+        "all_avb_be_wire_mbps": 10.631016666666667,
+        "configured_be_alone_mbps": 240.0
+      },
+      "e01": {
+        "events_per_8ms_mean": 13.0,
+        "all_avb_be_wire_mbps": 10.523616666666667,
+        "configured_be_alone_mbps": 260.0
+      },
+      "e02": {
+        "events_per_8ms_mean": 9.0,
+        "all_avb_be_wire_mbps": 7.379316666666667,
+        "configured_be_alone_mbps": 220.0
+      }
+    }
+  },
+  "downstream_supervision_vs_baseline_service": {
+    "A": {
+      "active_frames": 17,
+      "bin_disagreement": 6
+    },
+    "B": {
+      "active_frames": 20,
+      "bin_disagreement": 7
+    },
+    "C": {
+      "active_frames": 16,
+      "bin_disagreement": 5
+    }
+  },
+  "uninstalled_candidate_influences_physics": {
+    "same_executed_gcl": true,
+    "only_precheck_candidate_differs": true,
+    "down_A_before_ns": 4625069.551423484,
+    "down_A_after_ns": 6124545.391423485,
+    "reported_e2e_before_ms": [
+      1.1016088690108314
+    ],
+    "reported_e2e_after_ms": [
+      1.0943754610108423
+    ]
+  },
+  "e2e_less_than_its_own_path_time": {
+    "samples": 30,
+    "violations": 30,
+    "examples": [
+      {
+        "cycle": 0,
+        "reported_e2e_ms": 0.9491142424638306,
+        "upstream_to_downstream_arrival_alone_ms": 2.0456133305221784
+      },
+      {
+        "cycle": 1,
+        "reported_e2e_ms": 1.106057854731531,
+        "upstream_to_downstream_arrival_alone_ms": 1.9874972912596232
+      },
+      {
+        "cycle": 2,
+        "reported_e2e_ms": 1.117936641566923,
+        "upstream_to_downstream_arrival_alone_ms": 2.0090278533577735
+      }
+    ],
+    "executed_schedule_C1": [
+      true,
+      "PASS"
+    ]
+  },
+  "counterfactual_changes_state": {
+    "before_credit": {
+      "e3u": 0.0,
+      "e4u": 0.0,
+      "e01": 0.0,
+      "e02": 0.0
+    },
+    "after_credit_despite_update_state_false": {
+      "e3u": 3200.0,
+      "e4u": 3400.0,
+      "e01": 3600.0,
+      "e02": 3200.0
+    }
+  },
+  "line4_q7_service_trace": {
+    "expected_A_path": [
+      "e12",
+      "e23",
+      "e34",
+      "e4d"
+    ],
+    "all_nextfit_calls_including_ghost_B_C": [
+      {
+        "port": "e23",
+        "tx_ns": 928.0
+      },
+      {
+        "port": "e23",
+        "tx_ns": 928.0
+      },
+      {
+        "port": "e12",
+        "tx_ns": 1184.0
+      },
+      {
+        "port": "e12",
+        "tx_ns": 1184.0
+      },
+      {
+        "port": "e23",
+        "tx_ns": 672.0
+      },
+      {
+        "port": "e23",
+        "tx_ns": 672.0
+      },
+      {
+        "port": "e34",
+        "tx_ns": 1184.0
+      },
+      {
+        "port": "e34",
+        "tx_ns": 1184.0
+      }
+    ],
+    "A_frame_and_echo_service_ports": [
+      "e12",
+      "e12",
+      "e34",
+      "e34"
+    ],
+    "missing_ports_in_all_calls": [
+      "e4d"
+    ]
+  },
+  "wire_message": {
+    "payload_bytes": 63,
+    "mode": "INTERVAL",
+    "serialization_unchanged_when_identity_changes": {
+      "candidate_id": true,
+      "config_hash": true,
+      "mapper_version": true,
+      "dst_port": true
+    },
+    "bounds_are_pmf_plus_minus_point06": true
+  },
+  "mapper_probability_mass": {
+    "input_occurrence_probability": 1.0,
+    "output_q": 0.0,
+    "out_of_window_mass": 2.0,
+    "q_plus_out": 2.0
+  },
+  "average_precision_ties": {
+    "all_scores": 0.5,
+    "positive_fraction": 0.5,
+    "AP_positive_rows_first": 1.0,
+    "AP_same_rows_reversed": 0.41666666666666663
+  },
+  "timing_predictor_not_equivalent": {
+    "tasks": [
+      2,
+      4
+    ],
+    "max_q_absolute_diff": 0.5261644415540943,
+    "max_pi_absolute_diff": 0.4439239501953125,
+    "benchmark_total_ms": {
+      "P50_ms": 2.656,
+      "P95_ms": 3.473,
+      "P99_ms": 4.251,
+      "Max_ms": 4.493
+    },
+    "benchmark_line4_ms": {
+      "P50_ms": 4.573,
+      "P95_ms": 5.792,
+      "P99_ms": 7.837,
+      "Max_ms": 8.25
+    }
+  },
+  "actor_zero_not_keep": {
+    "current_minus_baseline_ns": 8000,
+    "output_minus_current_ns_mean": -8000.0,
+    "output_matches_baseline": true
+  },
+  "source_unchanged_during_probe": true
+}

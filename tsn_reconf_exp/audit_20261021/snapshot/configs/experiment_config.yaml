@@ -1,0 +1,141 @@
+# Unified Authoritative Configuration for TSN Whole-Table TT Reconfiguration
+# Synchronized with: 2026.10.20(8).md, 实验参数设置(4).md, 实验分组与外部对比计划.md
+version: "2026.10.21-frozen-v2"
+random_seed_master: 20261021
+
+network:
+  link_capacity_bps: 1000000000       # 1 Gb/s (1 bit = 1 ns)
+  hyperperiod_ns: 8000000             # H = 8 ms
+  tick_ns: 80                         # \Delta_g = 80 ns (100,000 ticks per H)
+  wire_overhead_bytes: 20             # Preamble/SFD (8B) + IFG (12B)
+  max_nonpreempt_wire_bytes: 1542     # Conservative blocking bound (1518B BE + 20B + 4B margin)
+  guard_band_raw_ns: 12336            # 1542 * 8 ns
+  guard_band_aligned_ns: 12400        # 155 * 80 ns = 12.4 us
+  switch_proc_delay_ns: 2000          # d_proc = 2 us
+  link_prop_delay_ns: 500             # d_prop = 0.5 us
+  gcl_budget_main: 256                # Microchip LAN966x / Xilinx TSN IP standard
+  gcl_budget_scan: [128, 256, 512]
+
+timing_control:
+  freeze_offset_ns: 4000000           # f_k = t_k + 4 ms
+  activate_offset_ns: 8000000         # t_activate = t_k + 8 ms
+  control_budget_ns: 4000000          # T_control <= 4 ms
+  guard_margin_ns: 50000              # \Delta_guard = 50 us before 8 ms boundary
+  obs_window_ns: 8000000              # 8 ms per Set Transformer window
+  obs_history_windows: 4              # 4 x 8 ms = 32 ms ModernTCN history
+  pred_bin_ns: 500000                 # 16 bins x 0.5 ms in C_{k+1} = [t_k+8ms, t_k+16ms)
+  num_pred_bins: 16
+  control_frame_max_bytes: 128        # Compact Layer-2 Ethernet control frame (m_{u->d}, C2/C3)
+
+topologies:
+  Topology-v1:                        # Main setup & External Benchmark "star"
+    type: "star_aggregation"
+    controlled_ports: ["e3u", "e4u", "e01", "e02"]
+    dag_layers:
+      L1: ["e3u", "e4u"]
+      L2: ["e01", "e02"]
+    message_edges:
+      - {group: "A", src: "e3u", dst: "e01"}
+      - {group: "B", src: "e4u", dst: "e01"}
+      - {group: "C", src: "e4u", dst: "e02"}
+    uncontrolled_access_links: ["e_acc_A", "e_acc_B", "e_acc_C"]
+    uncontrolled_sink_links: ["e_sink_A", "e_sink_B", "e_sink_C"]
+
+  Topology-Line-4:                    # External Benchmark "line" & Robustness path_length
+    type: "line_cascade"
+    controlled_ports: ["e12", "e23", "e34", "e4d"]
+    dag_layers:
+      L1: ["e12"]
+      L2: ["e23"]
+      L3: ["e34"]
+      L4: ["e4d"]
+    message_edges:
+      - {group: "A", src: "e12", dst: "e23"}
+      - {group: "A", src: "e23", dst: "e34"}
+      - {group: "A", src: "e34", dst: "e4d"}
+      - {group: "B", src: "e12", dst: "e23"}
+      - {group: "B", src: "e23", dst: "e34"}
+      - {group: "B", src: "e34", dst: "e4d"}
+      - {group: "C", src: "e23", dst: "e34"}
+      - {group: "C", src: "e34", dst: "e4d"}
+
+tt_traffic:
+  mac_length_choices_bytes: [500, 1000]
+  periods_ns: [500000, 1000000, 2000000, 4000000, 8000000] # 0.5, 1, 2, 4, 8 ms
+  deadline_equals_period: true
+  source_jitter_ns: 0
+  # Realistic industrial TSN TT load: U_e^{TT} ~ 18%..22% (Nominal ~ 20%, Scan: 10% / 20% / 30%)
+  # Uses zero-dark-gap contiguous cluster packing so merged protected regions keep N_entry <= 210 < 256
+  nominal_global_counts_by_period:
+    500000: 16     # 0.5 ms high-frequency motion sync flows (8 per controlled port, 1000 B MAC)
+    1000000: 12    # 1.0 ms cyclic PLC control flows (6 per port, 1000 B MAC)
+    2000000: 8     # 2.0 ms supervisory control flows (4 per port, 1000 B MAC)
+    4000000: 4     # 4.0 ms state sync flows (2 per port, 500 B MAC)
+    8000000: 4     # 8.0 ms diagnostic sync flows (2 per port, 500 B MAC; total 44 global flows, 22 per port)
+  utt_scan_levels_pct: [10.0, 20.0, 30.0]
+
+st_traffic:
+  deadline_e2e_ns: 1000000            # D_g = 1.0 ms (frozen main setting)
+  deadline_scan_ns: [750000, 1000000, 1250000, 1500000]
+  jitter_support_ns: [-100000, 100000] # Bounded uniform/truncated normal in [-0.1, +0.1] ms
+  jitter_scan_ns: [50000, 100000, 200000]
+  groups:
+    A:
+      name: "AMR_Obstacle_Braking"
+      path_v1: ["e_acc_A", "e3u", "e01", "e_sink_A"]
+      mac_bytes: 128                  # Wire = 148 B -> 1184 ns
+      decision_delay_ns: 12000000     # T_A^dec = 12 ms
+      lock_cooldown_ns: 14500000      # T_lock >= 14.5 ms -> T_A^min >= 14.3 ms
+      precursor_ramp_ns: 20000000     # 20 ms progressive risk modulation before threshold
+      mean_hazard_rate_per_s: 38.0
+    B:
+      name: "DualArm_Collab_Correction"
+      path_v1: ["e_acc_B", "e4u", "e01", "e_sink_B"]
+      mac_bytes: 96                   # Wire = 116 B -> 928 ns
+      decision_delay_ns: 9000000      # T_B^dec = 9 ms
+      lock_cooldown_ns: 14500000      # T_lock >= 14.5 ms -> T_B^min >= 14.3 ms
+      precursor_ramp_ns: 22000000     # 22 ms progressive cross-flow pairing modulation
+      mean_hazard_rate_per_s: 42.0
+    C:
+      name: "Motor_Thermal_Protection"
+      path_v1: ["e_acc_C", "e4u", "e02", "e_sink_C"]
+      mac_bytes: 64                   # Wire = 84 B -> 672 ns
+      hold_delay_ns: 10000000         # T_C^hold = 10 ms
+      lock_cooldown_ns: 15000000      # T_lock >= 15.0 ms -> T_C^min >= 14.8 ms
+      precursor_ramp_ns: 24000000     # 24 ms multi-window telemetry modulation
+      mean_hazard_rate_per_s: 35.0
+
+avb_cbs:
+  soft_deadline_ns: 2000000           # 2.0 ms soft E2E target
+  ports:
+    e3u: {reserved_rate_bps: 125000000, window_ns: 8000000, margin_bps: 10000000, idle_slope_bps: 220000000, hi_credit_bits: 3200, lo_credit_bits: -12336}
+    e4u: {reserved_rate_bps: 130000000, window_ns: 8000000, margin_bps: 10000000, idle_slope_bps: 230000000, hi_credit_bits: 3400, lo_credit_bits: -12336}
+    e01: {reserved_rate_bps: 140000000, window_ns: 8000000, margin_bps: 10000000, idle_slope_bps: 250000000, hi_credit_bits: 3600, lo_credit_bits: -12336}
+    e02: {reserved_rate_bps: 125000000, window_ns: 8000000, margin_bps: 10000000, idle_slope_bps: 220000000, hi_credit_bits: 3200, lo_credit_bits: -12336}
+
+be_traffic:
+  mac_bytes_range: [64, 1518]
+  long_frame_prob: 0.35               # 35% near 1518B to induce realistic non-preemptive residual blocking
+  nominal_offered_rate_bps:
+    e3u: 220000000
+    e4u: 240000000
+    e01: 260000000
+    e02: 220000000
+  scan_multipliers: [0.6, 1.0, 1.4]
+
+service_mapper:
+  num_quadrature_scenarios: 32
+  include_in_bin_mean_offset: true    # Appends \mu_t^{prop} to prevent 0.5ms bin aliasing
+  prob_mode_max_carryin_frames: 1     # Switches to INTERVAL mode if unknown carry-in exceeds bound
+
+rl_training:
+  gamma: 1.0
+  gae_lambda: 0.95
+  ppo_clip: 0.2
+  reward_weights:
+    lambda_D: 2.5                     # ST E2E delay integral
+    lambda_M: 12.0                    # ST E2E deadline miss (> 1.0 ms)
+    lambda_A: 0.8                     # AVB Q4 backlog integral
+    lambda_m: 0.15                    # Actual whole-table reconfiguration distance
+    lambda_p: 0.25                    # Safety projection intervention distance
+  prediction_noise_levels: [0.15, 0.30, 0.50]

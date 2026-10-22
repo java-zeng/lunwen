@@ -1,0 +1,10 @@
+{
+  "main_policy": "Local+Prop+MAPPO",
+  "evaluation_seed": 3001,
+  "decisions": 64,
+  "C1_results": {
+    "TT_OVERLAP": 64
+  },
+  "local_precheck_failed_port_calls": 0,
+  "scope": "First 64 decisions, using captured checkpoint and exact current evaluation proposal logic; no retraining and no full experiment rerun."
+}
